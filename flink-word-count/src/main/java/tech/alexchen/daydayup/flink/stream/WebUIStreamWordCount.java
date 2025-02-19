@@ -12,18 +12,21 @@ import org.apache.flink.util.Collector;
  * @author alexchen
  * @since 2025-02-13 11:45
  */
-public class StreamWordCount {
+public class WebUIStreamWordCount {
 
     public static void main(String[] args) throws Exception {
-        final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
-        env.setParallelism(1);
+        Configuration conf = new Configuration();
+        //设置WebUI绑定的本地端口
+        conf.set(RestOptions.BIND_PORT, "8081");
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(conf);
+        env.setParallelism(3);
+        env.disableOperatorChaining(); // 禁用算子链
 
         // 使用 nc -lk 9999 启动一个输入流，然后在控制台输入数据
         DataStream<Tuple2<String, Integer>> dataStream = env
                 .socketTextStream("localhost", 9999)
                 .flatMap(new Splitter())
                 .keyBy(value -> value.f0)
-//                .window(TumblingProcessingTimeWindows.of(Duration.ofSeconds(5L)))
                 .sum(1);
         dataStream.print();
         env.execute("Window WordCount");
