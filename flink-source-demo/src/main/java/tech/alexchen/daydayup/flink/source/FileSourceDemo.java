@@ -1,4 +1,4 @@
-package tech.alexchen.daydayup.source;
+package tech.alexchen.daydayup.flink.source;
 
 import org.apache.flink.api.common.eventtime.WatermarkStrategy;
 import org.apache.flink.connector.file.src.FileSource;
@@ -16,7 +16,7 @@ public class FileSourceDemo {
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment
                 .getExecutionEnvironment();
-        Path path = new Path("/Users/alexchen/Projects/github/flink-examples/flink-source-demo/input/data.txt");
+        Path path = new Path("/Users/alexchen/Projects/github/flink-examples/flink-source-demo/src/main/resources/data.txt");
         FileSource<String> source = FileSource.forRecordStreamFormat(new TextLineInputFormat(), path).build();
         DataStreamSource<String> dataStreamSource = env.fromSource(source, WatermarkStrategy.noWatermarks(), "fileSource");
         dataStreamSource.print();

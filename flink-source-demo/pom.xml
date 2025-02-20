@@ -92,7 +92,7 @@
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <!-- Replace this with the main class of your job -->
-                                    <mainClass>tech.alexchen.daydayup.source.DataGeneratorSourceDemo</mainClass>
+                                    <mainClass>tech.alexchen.daydayup.flink.source.DataGeneratorSourceDemo</mainClass>
                                 </transformer>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                             </transformers>

@@ -1,4 +1,4 @@
-package tech.alexchen.daydayup.source;
+package tech.alexchen.daydayup.flink.source;
 
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
