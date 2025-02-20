@@ -1,4 +1,4 @@
-package tech.alexchen.daydayup.flink.source;
+package tech.alexchen.daydayup.flink.demo.source;
 
 import org.apache.flink.api.common.eventtime.WatermarkStrategy;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>tech.alexchen.daydayup</groupId>
-    <artifactId>flink-source-demo</artifactId>
+    <artifactId>flink-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -92,7 +92,7 @@
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <!-- Replace this with the main class of your job -->
-                                    <mainClass>tech.alexchen.daydayup.flink.source.DataGeneratorSourceDemo</mainClass>
+                                    <!-- <mainClass>tech.alexchen.daydayup.flink.source.DataGeneratorSourceDemo</mainClass> -->
                                 </transformer>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                             </transformers>
