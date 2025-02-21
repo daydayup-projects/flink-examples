@@ -21,7 +21,7 @@ import java.time.Duration;
  * @author alexchen
  * @since 2025-02-20 17:02
  */
-public class SinkFileDemo {
+public class FileSinkDemo {
 
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();

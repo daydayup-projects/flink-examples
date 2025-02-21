@@ -18,7 +18,7 @@ import java.sql.SQLException;
  * @author alexchen
  * @since 2025-02-20 17:27
  */
-public class SinkMysqlDemo {
+public class JdbcSinkDemo {
 
 
     public static void main(String[] args) throws Exception {

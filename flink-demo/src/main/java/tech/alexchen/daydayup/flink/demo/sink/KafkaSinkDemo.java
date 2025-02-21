@@ -14,7 +14,7 @@ import org.apache.kafka.clients.producer.ProducerConfig;
  * @author alexchen
  * @since 2025-02-20 17:27
  */
-public class SinkKafkaDemo {
+public class KafkaSinkDemo {
 
     /**
      * 注意：如果要使用 精准一次 写入Kafka，需要满足以下条件，缺一不可
