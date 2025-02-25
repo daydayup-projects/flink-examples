@@ -42,12 +42,12 @@ public class KeyedProcessFunctionTopNDemo {
 
         // 最近10秒= 窗口长度， 每5秒输出 = 滑动步长
         /**
-         * TODO 思路二： 使用 KeyedProcessFunction实现
-         * 1、按照vc做keyby，开窗，分别count
+         * 思路二： 使用 KeyedProcessFunction实现
+         * 1、按照vc做 keyBy，开窗，分别count
          *    ==》 增量聚合，计算 count
          *    ==》 全窗口，对计算结果 count值封装 ，  带上 窗口结束时间的 标签
          *          ==》 为了让同一个窗口时间范围的计算结果到一起去
-         *
+         * <p>
          * 2、对同一个窗口范围的count值进行处理： 排序、取前N个
          *    =》 按照 windowEnd做keyby
          *    =》 使用process， 来一条调用一次，需要先存，分开存，用HashMap,key=windowEnd,value=List
