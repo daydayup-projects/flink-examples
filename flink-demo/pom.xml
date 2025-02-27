@@ -71,6 +71,11 @@
             <version>${flink.connector.jdbc.version}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-statebackend-rocksdb</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
         <!-- <dependency> -->
         <!--     <groupId>ch.qos.logback</groupId> -->
         <!--     <artifactId>logback-core</artifactId> -->
