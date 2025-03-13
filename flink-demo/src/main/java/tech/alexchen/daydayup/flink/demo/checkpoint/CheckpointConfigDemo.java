@@ -2,6 +2,7 @@ package tech.alexchen.daydayup.flink.demo.checkpoint;
 
 import org.apache.flink.api.common.typeinfo.Types;
 import org.apache.flink.api.java.tuple.Tuple2;
+import org.apache.flink.configuration.CheckpointingOptions;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.configuration.ExternalizedCheckpointRetention;
 import org.apache.flink.core.execution.CheckpointingMode;
@@ -19,16 +20,15 @@ public class CheckpointConfigDemo {
 
     public static void main(String[] args) throws Exception {
         Configuration config = new Configuration();
-        // 最新 指定检查点的存储位置
-//        config.set(CheckpointingOptions.CHECKPOINT_STORAGE, "filesystem");
-//        config.set(CheckpointingOptions.CHECKPOINTS_DIRECTORY, "file:///flink/checkpoints");
-
+        // 最终检查点
+        config.set(CheckpointingOptions.ENABLE_CHECKPOINTS_AFTER_TASKS_FINISH, false);
         StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(config);
         env.setParallelism(1);
 
+        // 实验性功能：开启 changelog （增量检查），默认使用 内存，生产需要使用配置文件指定文件系统
+        env.enableChangelogStateBackend(true);
+
         // 检查点配置
-        // 代码中用到hdfs，需要导入hadoop依赖、指定访问hdfs的用户名
-//        System.setProperty("HADOOP_USER_NAME", "atguigu");
         // 1、启用检查点: 默认是barrier对齐的，周期为5s, 精准一次
         env.enableCheckpointing(5000, CheckpointingMode.EXACTLY_ONCE);
 
